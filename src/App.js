@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
+import CounterApp from "./components/counter";
+import Balance from "./components/balance";
 
 function App() {
+  const handleIncrementCounter = () => {
+    setCounter(prev=>prev + 1)
+  }
+
+  const handleDecrementCounter = () => {
+    setCounter(prev=>prev - 1)
+  }
+  const [counter, setCounter] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>With UseState</p>
+      <button onClick={handleIncrementCounter}>
+        +
+      </button>
+      {counter}
+      <button onClick={handleDecrementCounter}>
+        -
+      </button>
+      <p>-----------------------------------</p>
+      <p>With React-Redux</p>
+      <CounterApp />
+      <p>-----------------------------------</p>
+      <Balance />
+
     </div>
   );
 }
